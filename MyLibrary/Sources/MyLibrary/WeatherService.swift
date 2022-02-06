@@ -16,7 +16,7 @@ class WeatherServiceImpl: WeatherService {
                 print(auth)
                 let token = auth.access_token
                 let headers: HTTPHeaders = [
-                    "Authorization": "Basic " + token,
+                    "Authorization": "Bearer " + token,
                     "Accept": "application/json"
                 ]
                 AF.request("http://44.202.0.196:3000/v1/weather", method: .get, headers: headers).validate(statusCode: 200..<300).responseDecodable(of: Weather.self) { response in
